@@ -84,6 +84,13 @@
         ]
       }
     },
+     mounted() {
+      if (localStorage.getItem('tasks')) {
+        
+          this.tasks = JSON.parse(localStorage.getItem('tasks'))
+        
+      }
+    },
     methods:{
       addTask(){
         let NewTask = {
@@ -93,6 +100,7 @@
         }
         this.tasks.push(NewTask)
         this.NewTaskTitulo=''
+        this.savetaks()
       },
       doneTask(id){
         let task = this.tasks.filter(task => task.id === id)[0]
@@ -100,7 +108,11 @@
       },
       DeleteTask(id){
         this.tasks = this.tasks.filter(task => task.id !== id)
-      }
+      },
+      savetaks() {
+      const parsed = JSON.stringify(this.tasks);
+      localStorage.setItem('tasks', parsed);
+    }
     }
   }
 </script>
