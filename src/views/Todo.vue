@@ -86,9 +86,7 @@
     },
      mounted() {
       if (localStorage.getItem('tasks')) {
-        
-          this.tasks = JSON.parse(localStorage.getItem('tasks'))
-        
+        this.tasks = JSON.parse(localStorage.getItem('tasks'))
       }
     },
     methods:{
